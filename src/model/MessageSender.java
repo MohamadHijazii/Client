@@ -26,9 +26,7 @@ public class MessageSender implements Runnable{
 	void SendMessage() {
 		try {
 			DataOutputStream out = new DataOutputStream(Network.socket.getOutputStream());
-			DataInputStream in = new DataInputStream(Network.socket.getInputStream());
 			//PrintWriter out = new PrintWriter(Network.socket.getOutputStream(),true);
-			StringBuilder s = new StringBuilder();
 			out.writeByte('M');
 			out.writeInt(0);
 			out.writeInt(Main.current_user.email.length());
@@ -40,9 +38,6 @@ public class MessageSender implements Runnable{
 			out.writeInt(body.length());
 			out.write(body.getBytes(StandardCharsets.UTF_8));
 			System.out.println("Buffer has been written");
-			byte response = (byte) in.read();
-			System.out.println("Responce: "+response);
-			System.out.println("Animal");
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

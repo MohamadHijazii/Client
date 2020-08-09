@@ -11,14 +11,12 @@ public class User {
 	
 	public static List<User> users =
 			Arrays.asList(
-		new User("mohd.hijazi@gmail.com","123",new ArrayList<Message>(),"gmail","127.0.0.1",6655),
-		new User("hd.saleh@gmail.com","123",new ArrayList<Message>(),"gmail","127.0.0.1",6655),
-		new User("moudi_hijazi@hotmail.com","123",new ArrayList<Message>(),"hotmail","127.0.0.1",44562),
-		new User("super_hod_hod@hotmail.com","123",new ArrayList<Message>(),"hotmail","127.0.0.1",44562),
-		new User("mohamad.hijazi@outlook.com","123",new ArrayList<Message>(),"gmail","127.0.0.1",6655),
-		new User("hadi.saleh@outlook.com","123",new ArrayList<Message>(),"gmail","127.0.0.1",6655),
-		new User("mh85645@ul.com","123",new ArrayList<Message>(),"gmail","127.0.0.1",6655),
-		new User("hs86311@ul.com","123",new ArrayList<Message>(),"gmail","127.0.0.1",6655)
+		new User("mohd.hijazi@gmail.com","123",new ArrayList<Message>(),"gmail","127.0.0.1",4512),
+		new User("hd.saleh@gmail.com","123",new ArrayList<Message>(),"gmail","127.0.0.1",4512),
+		new User("moudi_hijazi@hotmail.com","123",new ArrayList<Message>(),"hotmail","127.0.0.1",6658),
+		new User("super_hod_hod@hotmail.com","123",new ArrayList<Message>(),"hotmail","127.0.0.1",6658),
+		new User("mohamad.hijazi@outlook.com","123",new ArrayList<Message>(),"outlook","127.0.0.1",8895),
+		new User("hadi.saleh@outlook.com","123",new ArrayList<Message>(),"outlook","127.0.0.1",8895)
 	);
 
 	
