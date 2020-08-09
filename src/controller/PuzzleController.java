@@ -10,11 +10,12 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
+import model.Network;
 import model.Puzzle;
 
 public class PuzzleController implements Initializable{
 	
-	Puzzle p;
+	public static Puzzle p;
 	
     @FXML
     private AnchorPane pane;
@@ -23,9 +24,7 @@ public class PuzzleController implements Initializable{
     
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		p = new Puzzle();
-		p.generate();
-		//p.mix();
+		
 		setChars();
 		
 	}
@@ -42,20 +41,21 @@ public class PuzzleController implements Initializable{
 	//remove later
 	@FXML
     void mix(ActionEvent event) {
-		p.mix();
-		setChars();
     }
 	
 	
 	
     @FXML
     void verify(ActionEvent event) {
-    	if(p.verify()) {
-    		AlertHelper.informe("Correct solution");
-    	}
-    	else {
-    		AlertHelper.error("The solution is not correct!");
-    	}
+    	
+    	Network.sendSolution(p.getByteArray());
+    	
+//    	if(p.verify()) {
+//    		AlertHelper.informe("Correct solution");
+//    	}
+//    	else {
+//    		AlertHelper.error("The solution is not correct!");
+//    	}
     }
 	
 	

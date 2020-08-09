@@ -6,6 +6,8 @@ import javafx.fxml.FXML;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import model.MessageSender;
+import model.Network;
+import model.Puzzle;
 
 public class ComposeController {
 	@FXML
@@ -26,9 +28,10 @@ public class ComposeController {
 
     @FXML
     void send(ActionEvent event) {
-    	MessageSender m = new MessageSender(to.getText(),subject.getText(),body.getText());
-		Thread t = new Thread(m);
-		t.start();
+    	Network.SendMessage(to.getText(),subject.getText(),body.getText());
+    	byte []p = Network.waitForPuzzle();
+    	PuzzleController.p = new Puzzle(p);
+    	Main.redirect("Puzzle.fxml", event);
     }
 
 }

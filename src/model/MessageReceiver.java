@@ -3,7 +3,7 @@ package model;
 import java.io.IOException;
 import java.util.Scanner;
 
-public class MessageReceiver implements Runnable{
+public class MessageReceiver extends Thread{
 	
 	public String sender;
 	public String subject;

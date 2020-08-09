@@ -25,7 +25,7 @@ public class MessageSender implements Runnable{
 	
 	void SendMessage() {
 		try {
-			DataOutputStream out = new DataOutputStream(Network.socket.getOutputStream());
+			DataOutputStream out = new DataOutputStream(Network.link.getOutputStream());
 			//PrintWriter out = new PrintWriter(Network.socket.getOutputStream(),true);
 			out.writeByte('M');
 			out.writeInt(0);

@@ -17,6 +17,7 @@ public class Puzzle {
 	
 	//client
 	public Puzzle(byte []c) {
+		bytes = new char[36];
 		for(int i=0;i<36;i++) {
 			bytes[i] = (char)c[i];
 		}
@@ -108,6 +109,14 @@ public class Puzzle {
 		}
 		
 		return n;
+	}
+	
+	public byte []getByteArray(){
+		byte []t = new byte[36];
+		for(int i=0;i<36;i++) {
+			t[i] = (byte) bytes[i];
+		}
+		return t;
 	}
 
 }
