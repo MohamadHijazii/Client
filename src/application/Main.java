@@ -54,8 +54,6 @@ public class Main extends Application {
 	}
 	//Client
 	public static void main(String[] args) {
-		Network.connect("127.0.0.1",4225);
-		Network.ReceiveEmail();
 		launch(args);
 	}
 }

@@ -17,6 +17,8 @@ public class Network {
 	public static void connect(String ip,int port) {
 		try {
 			socket = new Socket(ip,port);
+			Network.ip = ip;
+			Network.port = port;
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -27,7 +29,7 @@ public class Network {
 		
 	}
 	
-	public static void ReceiveEmail() {
+	public static void Receive() {
 		MessageReceiver receiver = new MessageReceiver();
 		Thread thread = new Thread(receiver);
 		thread.start();
