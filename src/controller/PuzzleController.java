@@ -1,13 +1,18 @@
 package controller;
 
 import java.net.URL;
+import java.util.HashMap;
+import java.util.Optional;
 import java.util.ResourceBundle;
 
+import application.Main;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import model.Network;
@@ -38,24 +43,29 @@ public class PuzzleController implements Initializable{
 	}
 	
 	
-	//remove later
-	@FXML
-    void mix(ActionEvent event) {
-    }
-	
-	
 	
     @FXML
     void verify(ActionEvent event) {
     	
     	Network.sendSolution(p.getByteArray());
+    	String s = null;
+    	HashMap<Boolean, String> h = Network.WaitForResult();
+    	boolean res = h.containsKey(true);
+    	s = (String)h.get(res);
     	
-//    	if(p.verify()) {
-//    		AlertHelper.informe("Correct solution");
-//    	}
-//    	else {
-//    		AlertHelper.error("The solution is not correct!");
-//    	}
+    	if(res) {
+    		Alert alert = new Alert(Alert.AlertType.INFORMATION);
+	        alert.setContentText(s);
+	        Optional<ButtonType> result = alert.showAndWait();
+	        if(result.get() == ButtonType.OK) {
+	        	Main.redirect("Inbox.fxml", event);
+	        }
+    	}
+    	else {
+    		Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setContentText(s);
+            alert.show();
+    	}
     }
 	
 	

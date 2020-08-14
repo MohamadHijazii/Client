@@ -15,6 +15,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Text;
 import model.Message;
+import model.Network;
 
 public class InboxController implements Initializable{
 	@FXML
@@ -40,18 +41,17 @@ public class InboxController implements Initializable{
     
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		
+		setInbox();
+	}
+	
+	void setInbox() {
 		mail.setText(Main.current_user.email);
 		cl.setCellValueFactory(new PropertyValueFactory<Message, String>("sender"));
-		Main.current_user.addMessage("moudi.hijazi98@gmail.com", "Info 408 project", "Hello\n where is the project.\n Regards ..");
-		Main.current_user.addMessage("lolo@gmail.com", "...", "Hello\n I love pasta ..");
-		Main.current_user.addMessage("trump@hotmail.com", "Election", "Hello\nwhat do i have to do to win the next election\nplease answer..");
-		Main.current_user.addMessage("super_hodhod@hotmail.com", "", "Hello\n I am noob");
+		
 
 		
 		ObservableList<Message> msg = Main.current_user.getMessages();
 		tb.getItems().setAll(msg);
-		
 	}
 	
 	@FXML
@@ -62,6 +62,12 @@ public class InboxController implements Initializable{
 			subject.setText("Subject: "+msg.subject);
 			txt.setText(msg.body);
 		}
+    }
+	
+	@FXML
+    void refresh(ActionEvent event) {
+		Network.getInbox();
+		setInbox();
     }
 
 }

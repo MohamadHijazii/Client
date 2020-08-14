@@ -18,7 +18,14 @@ public class SampleController {
     	String _email = email.getText();
     	String _pwd = pwd.getText();
     	Main.current_user = User.getUserWith(_email, _pwd);
+    	if(Main.current_user == null) {
+    		return;
+    	}
     	Network.connect("localhost", Main.current_user.serverPort);
+    	if(Main.current_user != null) {
+    		Main.current_user.email = _email;
+    		Network.getInbox();
+    	}
     	//Network.Receive();
     	System.out.println("Connected to ip: "+Network.Host+", Port: "+Network.port);
     	if(Main.current_user != null) {

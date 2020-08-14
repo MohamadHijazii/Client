@@ -5,8 +5,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane fx:id="pane" prefHeight="600.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.171" fx:controller="controller.PuzzleController">
+<AnchorPane fx:id="pane" prefHeight="600.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.PuzzleController">
    <children>
       <Label alignment="CENTER" layoutX="114.0" layoutY="59.0" prefHeight="34.0" prefWidth="37.0" text="A" textAlignment="CENTER">
          <font>
@@ -199,11 +198,6 @@
             <Button layoutX="118.0" layoutY="372.0" mnemonicParsing="false" onAction="#b6" prefHeight="34.0" prefWidth="37.0" />
             <Button layoutX="263.0" layoutY="372.0" mnemonicParsing="false" onAction="#b7" prefHeight="34.0" prefWidth="37.0" />
             <Button layoutX="409.0" layoutY="372.0" mnemonicParsing="false" onAction="#b8" prefHeight="34.0" prefWidth="37.0" />
-            <Button layoutX="226.0" layoutY="473.0" mnemonicParsing="false" onAction="#mix" prefHeight="34.0" prefWidth="99.0" text="Mix">
-               <font>
-                  <Font size="20.0" />
-               </font>
-            </Button>
             <Button layoutX="347.0" layoutY="473.0" mnemonicParsing="false" onAction="#verify" prefHeight="34.0" prefWidth="99.0" text="Verify">
                <font>
                   <Font size="20.0" />

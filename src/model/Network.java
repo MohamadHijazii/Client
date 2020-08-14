@@ -5,6 +5,8 @@ import java.io.DataOutputStream;
 import java.io.IOException;
 import java.net.Socket;
 import java.nio.charset.StandardCharsets;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Scanner;
 
 import application.Main;
@@ -24,6 +26,10 @@ public class Network{
 			Network.port = port;
 			in = new DataInputStream(link.getInputStream());
 			out = new DataOutputStream(link.getOutputStream());
+			out.write('L');
+			out.writeInt(Main.current_user.email.length());
+			out.write(Main.current_user.email.getBytes());
+			System.out.println("I am "+Main.current_user.email);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -74,7 +80,7 @@ public class Network{
 
 	
 	public static void sendSolution(byte []sol) {
-try {
+		try {
 			
 			out.writeByte('S');
 			out.writeInt(idOnNet);
@@ -87,4 +93,52 @@ try {
 
 	}
 	
+	public static HashMap<Boolean, String> WaitForResult() {
+		HashMap<Boolean, String> h = new HashMap<>();
+		try {
+			boolean b = in.readBoolean();
+			int len = in.readInt();
+			StringBuilder s = new StringBuilder();
+			while(len -- !=0) {
+				s.append((char)in.readByte());
+			}
+			h.put(b, s.toString());
+			return h;
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return null;
+	}
+	
+	public static void getInbox() {
+		Main.current_user.messages = new ArrayList<>();
+		try {
+			out.write('B');
+			int nb = in.readInt();
+			int n;
+			String from="",subject="",body="";
+			for(int i=0;i<nb;i++) {
+				n = in.readInt();
+				while(n--!=0) {
+					from += (char)in.readByte();
+				}
+				n = in.readInt();
+				while(n--!=0) {
+					subject += (char)in.readByte();
+				}
+				n = in.readInt();
+				while(n--!=0) {
+					body += (char)in.readByte();
+				}
+				Main.current_user.addMessage(from, subject, body);
+			}
+			
+			
+			
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
 }
